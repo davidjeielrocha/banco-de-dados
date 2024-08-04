@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "MoneyMakers",
+            "database": "${workspaceFolder:aa-bd}/money_makers.db"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

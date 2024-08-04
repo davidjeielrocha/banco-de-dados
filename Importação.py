@@ -2,10 +2,10 @@ import pandas as pd
 import sqlite3
 
 # URL of the CSV file
-url = 'https://raw.githubusercontent.com/davidjeielrocha/banco-de-dados/master/money-makers-bb.csv'
+csv_file = 'money-makers-bb.csv'
 
 # Reading the CSV file
-df = pd.read_csv(url)
+df = pd.read_csv(csv_file)
 
 # Display the first few rows of the dataframe to understand its structure
 print(df.head())
