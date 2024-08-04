@@ -8,8 +8,9 @@ csv_file = 'money-makers-bb.csv'
 df = pd.read_csv(csv_file)
 
 # Exibir as primeiras linhas do dataframe para entender a estrutura
-print("Primeiras linhas do dataframe:")
+print(" <-- Teste com as primeiras linhas do dataframe:")
 print(df.head())
+print("Final do teste -->")
 
 # Criar uma conexão com um banco de dados SQLite
 conn = sqlite3.connect('money_makers.db')
@@ -22,13 +23,13 @@ cursor.execute("DROP TABLE IF EXISTS money_makers")
 
 # Criar a tabela com a estrutura apropriada com base no arquivo CSV
 create_table_query = """
-CREATE TABLE money_makers (
-    Nome TEXT,
-    Cargo TEXT,
-    Empresa TEXT,
-    Ano INTEGER,
-    Salario FLOAT
-)
+    CREATE TABLE money_makers (
+        Nome TEXT,
+        Cargo TEXT,
+        Empresa TEXT,
+        Ano INTEGER,
+        Salario FLOAT
+    )
 """
 cursor.execute(create_table_query)
 
