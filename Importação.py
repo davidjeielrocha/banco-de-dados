@@ -1,25 +1,26 @@
 import pandas as pd
 import sqlite3
 
-# URL of the CSV file
+# Nome do arquivo CSV local
 csv_file = 'money-makers-bb.csv'
 
-# Reading the CSV file
+# Lendo o arquivo CSV
 df = pd.read_csv(csv_file)
 
-# Display the first few rows of the dataframe to understand its structure
+# Exibir as primeiras linhas do dataframe para entender a estrutura
+print("Primeiras linhas do dataframe:")
 print(df.head())
 
-# Create a connection to a SQLite database
+# Criar uma conexão com um banco de dados SQLite
 conn = sqlite3.connect('money_makers.db')
 
-# Create a cursor object
+# Criar um objeto cursor
 cursor = conn.cursor()
 
-# Drop the table if it already exists
+# Remover a tabela se ela já existir
 cursor.execute("DROP TABLE IF EXISTS money_makers")
 
-# Create table with appropriate schema based on the CSV file
+# Criar a tabela com a estrutura apropriada com base no arquivo CSV
 create_table_query = """
 CREATE TABLE money_makers (
     Nome TEXT,
@@ -31,14 +32,15 @@ CREATE TABLE money_makers (
 """
 cursor.execute(create_table_query)
 
-# Commit the transaction
+# Confirmar a transação
 conn.commit()
 
-# Write the dataframe to the SQL table
+# Escrever o dataframe na tabela SQL
 df.to_sql('money_makers', conn, if_exists='append', index=False)
 
-# Verify that the data has been inserted correctly
+# Verificar se os dados foram inseridos corretamente
+print("Dados inseridos no banco de dados:")
 print(pd.read_sql('SELECT * FROM money_makers LIMIT 5', conn))
 
-# Close the connection
+# Fechar a conexão
 conn.close()
